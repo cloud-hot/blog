@@ -66,20 +66,100 @@ Implement a function rotateDots with the following steps:
 
 ### Dots into the letter “G”
 ```
-Implement a function dotsIntoG with the following steps:
-- Move dotBlue 47 pixels to the right duration 0.6, gLineAnim becomes visible instantly, dotBlue disappear shortly after the gLineAnim appears, then gLineAnim animate from 120 pixels left of its final position over 0.8 seconds and gLineAnim slightly overlap with the blue dot's disappearance
-- Add a label 'startDrawingG' at 1 second into the timeline,
-Set the gRed to be fully visible instantly at the 'startDrawingG' label, Animate gRed using drawSVG, starting from 71% to 88% and ending at 0% to 26% over 0.5 seconds, start the drawSVG animation 0.2 seconds before the previous animation ends, Set dotRed to be invisible at the same time as 'startDrawingG' label
-- Set the gYellow to be fully visible 0.1 after the 'startDrawingG' label, Animate gYellow using drawSVG, starting from 71% to 88% and ending at 17% to 36% over 0.6 seconds, start the drawSVG animation 0.45 seconds before the previous animation ends, set dotYellow to be invisible 0.1 after the 'startDrawingG' label
-- Set the gGreen to be fully visible 0.1 after the 'startDrawingG' label, Animate gGreen using drawSVG, starting from 71% to 88% and ending at 36% to 61% over 0.55 seconds, Start the drawSVG animation 0.6 seconds before the previous animation ends, Set dotGreen to be invisible 0.4 after the 'startDrawingG' label
-- Set the gLineAnim to be fully invisible 0.3 after the 'startDrawingG' label, Set the gLine to be fully visible 0.3 after the 'startDrawingG' label, set the gBlue to be fully visible 0.3 after the 'startDrawingG' label, animate gBlue using drawSVG, starting from 71% to 88% and ending at 61% to 78% over 0.55 seconds, Start the drawSVG animation 0.55 seconds before the previous animation ends
-- Set the gRedb to be fully visible 0.25 after the 'startDrawingG' label, animate the ending red part of the 'G' over 0.7 seconds, start with a rotation of -10 degrees and drawSVG at "100% 100%", end with a rotation of 0 degrees and drawSVG at "80% 100%", start the drawSVG animation 0.22 seconds before the previous animation ends
+Create an animation function called `dotsIntoG` for our Google 'G' logo SVG:
+
+TIMING MAP:
+0.0s - Start: .dotBlue moves right (47px, 0.6s)
+0.7s - .dotBlue fades out
+0.5s - #gLineAnim sweeps in from left (-120px, 0.8s)
+
+1.0s [startDrawingG] Main sequence:
+
+1. #redG:
+   - Appears at startDrawingG
+   - Draw (71-88% → 0-26%, 0.5s duration)
+   - Start drawing -=0.2 (0.2s before its scheduled time)
+
+2. #yellowG:
+   - Appears at startDrawingG+0.1s
+   - Draw (71-88% → 17-36%, 0.6s duration)
+   - Start drawing -=0.45 (0.45s before its scheduled time)
+
+3. #greenG:
+   - Appears at startDrawingG+0.1s
+   - Draw (71-88% → 36-61%, 0.55s duration)
+   - Start drawing -=0.6
+
+4. #blueG:
+   - Appears at startDrawingG+0.3s
+   - Draw (71-88% → 61-78%, 0.55s duration)
+   - Start drawing -=0.55
+
+5. #redGb:
+   - Appears at startDrawingG+0.25s
+   - Draw (100% → 80%, 0.7s duration, rotates -10° → 0°)
+   - Start drawing -=0.22
+
+Dots fade times (from startDrawingG):
+- .dotRed: at start
+- .dotYellow: +0.1s
+- .dotGreen: +0.4s
+
+Line transition (from startDrawingG):
+- #gLineAnim fades out at +0.3s
+- #gLine appears at +0.3s
 ```
 
 ### From “G” back to the dots
+```
+Create a GSAP animation function called `getBackToDots` for transitioning elements back to dots. The animation should:
+
+1. Animation sequence should:
+   a. Start with a blue line retraction:
+      - Move '#gLineMask' x attribute 365px in 0.3s
+      - Hide '#gLineMask' and '#gLine' elements
+   
+   b. Transform colored segments to circles with drawSVG:
+      - '#blueG': 56% to 78%
+      - '#greenG': 31% to 56%
+      - '#yellowG': 12% to 31%
+      - '#redG': 0% to 21%
+      All in 0.3s with Power0.easeNone
+
+   c. Rotate colored elements:
+      - Rotate '#blueG', '#redG', and '#greenG' segments 50 degrees
+      - Modify '#greenG' drawSVG to 10%-20%
+      - Rotate '#yellowG' 40 degrees and drawSVG to 0%-10%
+      - Adjust '#blueG' drawSVG to 50%-60%
+      - Collapse '#redG' drawSVG to 0%
+      - Rotate '#redGb' with 50 degrees and drawSVG 80%-90%
+
+   d. Sequential dot transitions:
+      - '.dotRed': Show at (60, -37), follow [{x: 60, y: -37}, {x: 50, y: 40},{x: 0, y: 0}]
+      - '.dotBlue': Show at (51, 53), follow [{x: 51, y: 53}, {x: 15, y: 25},{x: 0, y: 0}]
+      - '.dotYellow': Show at (-5, -44), follow [{x: -5, y: -44}, {x: 3, y: -24},{x: 0, y: 0}]
+      - '.dotGreen': Show at (-108, -56), follow [{x: -108, y: -56}, {x: -27, y: -47},{x: 0, y: 0}]
+
+   e. Final mask rotation:
+      - Rotate '#gMask' 60 degrees with origin at -9 58
+
+2. Technical requirements:
+   - Use TimelineMax
+   - Implement proper timing with labels 'rotateG' and 'rotateCircles'
+   - Use Power0.easeNone for smooth transitions
+   - Use Power2.easeInOut/Out where specified
+   - Return the timeline object
+```
 
 ## Generate Animate code
 
-## Improvements
+## Improvements and Challenges
+1. adjust the timing of the dots into G animation
+2. describe the animation in more detail
+   1. know the animation technique, such as easing.
+3. iterate on the animation prompt
+   1. GPT generates the wrong timing, such as: the -= timing means each drawing action starts before its natural sequence point, creating the overlap effect with the previous actions rather than being absolute times from startDrawingG.
+4. Provide a prompt template for the animation, such as: svg elements, steps to describe the animation, timing map, and animation function name.
+
 
 
