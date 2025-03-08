@@ -11,9 +11,9 @@ date: "Oct 17 2024"
 ## Animation design
 Here's the final animation:
 
-<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="PPwqMN" data-pen-title="Google SVG Logo - GreenSock Animation" data-user="ihatetomatoes" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/ihatetomatoes/pen/PPwqMN">
-  Google SVG Logo - GreenSock Animation</a> by Petr Tichy (<a href="https://codepen.io/ihatetomatoes">@ihatetomatoes</a>)
+<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="QWeMdOY" data-pen-title="Google SVG Logo - GreenSock Animation" data-user="Andy-Zhang-the-encoder" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/Andy-Zhang-the-encoder/pen/QWeMdOY">
+  Google SVG Logo - GreenSock Animation</a> by Andy Zhang (<a href="https://codepen.io/Andy-Zhang-the-encoder">@Andy-Zhang-the-encoder</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
