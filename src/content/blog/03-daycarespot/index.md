@@ -45,7 +45,7 @@ Fast forward **one month after launch…**
 
 ---
 
-I’ll be sharing **all my experiments & growth data for the next 30 days** on **Twitter (@neo2bin)**, so if you’re interested in seeing **what works (and what doesn’t)**, follow along!  
+I’ll be sharing **all my experiments & growth data for the next 30 days** on **Twitter ([@neo2bin](https://x.com/neo2bin))**, so if you’re interested in seeing **what works (and what doesn’t)**, follow along!  
 
 **Let’s grow together!** 💡📈  
 
