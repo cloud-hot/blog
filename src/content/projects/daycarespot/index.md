@@ -6,7 +6,7 @@ demoURL: "https://www.daycarespot.com/"
 repoURL: ""
 ---
 
-![DaycareSpot](/logo.png)
+![DaycareSpot](logo.png)
 
 # Why we're building DaycareSpot
 
