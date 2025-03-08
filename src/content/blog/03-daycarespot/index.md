@@ -5,7 +5,7 @@ date: "Mar 08 2025"
 ---
 
 ## Why I built directory?  
-I want to build a passive income with valuable tool or website. At the same time, I am new to web development. So I want to learn build a well designed website with the help of cursor. I choose this niche because I am also an AMI-trained Montessori educator and dad. So I decided to build my first directory—a platform to help parents easily find the best childcare: **[DaycareSpot](https://www.daycarespot.com/)**.  
+I want to build valuable tools or websites. At the same time, I am new to web development. So I want to learn build a well designed website with the help of cursor. I choose this niche because I am also an AMI-trained Montessori educator and dad. So I decided to build my first directory—a platform to help parents easily find the best childcare: **[DaycareSpot](https://www.daycarespot.com/)**.  
 
 ## 💡 Tech Stack I Used  
 - ◇ **[@supabase](https://supabase.com/)** – Database & Realtime  
